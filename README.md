@@ -66,6 +66,6 @@ Divisão 80/20 estratificada (`random_state=42`). O teste fica guardado até a E
 
 | Modelo | F1-macro | Acurácia | Precisão `alta` |
 |---|---|---|---|
-| `DummyClassifier(strategy='most_frequent')` | _preencher_ | _preencher_ | 0 |
+| `DummyClassifier(strategy='most_frequent')` | 0.2847 | 0.7453 | 0 |
 
 O Dummy sempre responde a classe mais frequente. Por isso a precisão de `alta` é zero e o F1-macro fica baixo mesmo com acurácia alta. Esse é o número que o modelo da Entrega 3 precisa superar.
