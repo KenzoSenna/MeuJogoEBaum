@@ -1,6 +1,6 @@
 # Meu Jogo É Baum?
 
-**Integrantes:** Kenzo Senna, Hudson Batista Brandão, Matheus gay
+**Integrantes:** Kenzo Senna, Hudson Batista Brandão, Matheus Felipe
 
 ## 1. Problema
 
