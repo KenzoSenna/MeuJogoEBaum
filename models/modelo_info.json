@@ -1,0 +1,65 @@
+{
+  "modelo": "mjeb-hgb",
+  "versao": "1.0.0",
+  "algoritmo": "HistGradientBoostingClassifier",
+  "hiperparametros": {
+    "learning_rate": 0.1,
+    "max_leaf_nodes": 31
+  },
+  "pesos_das_classes": {
+    "baixa": 1,
+    "media": 2,
+    "alta": 3
+  },
+  "classes": [
+    "alta",
+    "baixa",
+    "media"
+  ],
+  "colunas_entrada": [
+    "Release date",
+    "Required age",
+    "Price",
+    "Supported languages",
+    "Windows",
+    "Mac",
+    "Linux",
+    "Achievements",
+    "Categories",
+    "Genres",
+    "Tags"
+  ],
+  "exemplo_entrada": {
+    "Release date": 10,
+    "Required age": "Livre",
+    "Price": 14.99,
+    "Supported languages": 5,
+    "Windows": "True",
+    "Mac": "False",
+    "Linux": "False",
+    "Achievements": 30,
+    "Categories": "Single-player",
+    "Genres": "Action",
+    "Tags": "Indie"
+  },
+  "linhas_treino": 80233,
+  "linhas_teste": 20059,
+  "metricas_teste": {
+    "f1_macro": 0.5554,
+    "acuracia": 0.7423,
+    "precisao_alta": 0.4786,
+    "recall_alta": 0.4384
+  },
+  "baseline_teste": {
+    "f1_macro": 0.2847,
+    "acuracia": 0.7452,
+    "precisao_alta": 0.0,
+    "recall_alta": 0.0
+  },
+  "versoes": {
+    "scikit-learn": "1.9.1",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "joblib": "1.6.0"
+  }
+}
