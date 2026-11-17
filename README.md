@@ -72,7 +72,7 @@ O Dummy sempre responde a classe mais frequente. Por isso a precisão de `alta` 
 
 ## 5. Tabela de decisões (Entrega 2)
 
-Toda a EDA foi feita no notebook `01_eda.ipynb` olhando apenas para o treino (`X_tr` e `y_tr`).
+Toda a EDA foi feita no notebook `notebooks/01_eda.ipynb` olhando apenas para o treino (`X_tr` e `y_tr`).
 
 | Coluna | Tipo | Achado na EDA | Decisão | Onde |
 |---|---|---|---|---|
