@@ -1,0 +1,9 @@
+data/*.csv
+data/*.json
+data/*.zip
+data/games_slim.csv.gz
+*.bundle
+.ipynb_checkpoints/
+__pycache__/
+.venv/
+venv/
