@@ -25,7 +25,7 @@ O alvo já existe no dataset. As faixas do SteamSpy só são agrupadas em três,
 | Fonte | [Steam Games Dataset — FronkonGames (Kaggle)](https://www.kaggle.com/datasets/fronkongames/steam-games-dataset) |
 | Origem | API oficial da Steam + SteamSpy |
 | Licença | MIT (uso acadêmico permitido) |
-| Tamanho | _preencher com `df.shape`_ |
+| Tamanho | `(100292, 40)` |
 
 **Por que este dataset:** tem mais de mil linhas, a coluna-alvo já existe, não está na lista de datasets proibidos e trata de um problema real de quem desenvolve jogos.
 
@@ -69,3 +69,23 @@ Divisão 80/20 estratificada (`random_state=42`). O teste fica guardado até a E
 | `DummyClassifier(strategy='most_frequent')` | 0.2847 | 0.7453 | 0 |
 
 O Dummy sempre responde a classe mais frequente. Por isso a precisão de `alta` é zero e o F1-macro fica baixo mesmo com acurácia alta. Esse é o número que o modelo da Entrega 3 precisa superar.
+
+## 5. Tabela de decisões (Entrega 2)
+
+Toda a EDA foi feita no notebook `01_eda.ipynb` olhando apenas para o treino (`X_tr` e `y_tr`).
+
+| Coluna | Tipo | Achado na EDA | Decisão | Onde |
+|---|---|---|---|---|
+| `Price` | numérica | assimétrica à direita; 7 valores acima de 200 | > 200 vira NaN; mediana + StandardScaler | limpar + pipeline |
+| `Achievements` | numérica | 172 valores acima de 500 (spam); assimétrica | > 500 vira NaN; mediana + StandardScaler | limpar + pipeline |
+| `Supported languages` | numérica | 72 linhas com `[]`; mediana sobe na classe alta | `[]` vira NaN; contar idiomas; mediana + StandardScaler | limpar + pipeline |
+| `Genres` | nominal | 27 gêneros; 0,13% vazia | pegar 1º gênero; moda + one-hot, ignore | limpar + pipeline |
+| `Tags` | nominal | 16,94% vazia; muitas tags com poucos jogos | pegar 1ª tag; moda + indicador + one-hot, ignore | limpar + pipeline |
+| `Categories` | nominal | 0,82% vazia; single-player é maioria | pegar modo principal; moda + one-hot, ignore | limpar + pipeline |
+| `Release date` | data | data em texto (`Oct 23, 2025`) | extrair mês (1 a 12); moda + one-hot, ignore | limpar + pipeline |
+| `Required age` | ordinal | 98,8% livre (0); ordem natural por idade | agrupar em faixas (`Livre` a `18+`); ordinal com ordem fixa | limpar + pipeline |
+| `Windows`, `Mac`, `Linux` | binária | sem vazios; maior correlação é 0,55 (< 0,9) | manter todas; one-hot | limpar + pipeline |
+| `AppID`, `Name`, URLs, `About the game`, `Reviews`, `Notes`, `Developers`, `Publishers`, `Discount`, `DLC count` | ID / texto livre | identificadores ou textos fora do formulário | remover | limpar(df) |
+| `Positive`, `Negative`, `Recommendations`, `Peak CCU`, `User score`, `Metacritic score`, `Score rank`, tempos de jogo | vaza | só existem depois do lançamento | remover | limpar(df) |
+
+No teste de sanidade com validação cruzada (`cv=5`), o `Pipeline` com `ColumnTransformer` e `LogisticRegression(max_iter=1000)` rodou sem `NaN`, manteve as `80233` linhas de treino e atingiu **F1-macro = 0.4147** (superando o `0.2847` do baseline da Entrega 1).
