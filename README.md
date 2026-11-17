@@ -25,7 +25,7 @@ O alvo já existe no dataset. As faixas do SteamSpy só são agrupadas em três,
 | Fonte | [Steam Games Dataset — FronkonGames (Kaggle)](https://www.kaggle.com/datasets/fronkongames/steam-games-dataset) |
 | Origem | API oficial da Steam + SteamSpy |
 | Licença | MIT (uso acadêmico permitido) |
-| Tamanho | `(100292, 40)` |
+| Tamanho | 125.855 linhas × 40 colunas no arquivo; 100.292 linhas após os filtros |
 
 **Por que este dataset:** tem mais de mil linhas, a coluna-alvo já existe, não está na lista de datasets proibidos e trata de um problema real de quem desenvolve jogos.
 
